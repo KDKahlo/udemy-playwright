@@ -49,7 +49,7 @@ test.describe('My first test suite', () => {
         await expect(page).toHaveTitle('Zero - Personal Banking - Loans - Credit Cards')
     })
     //assertions
-    test( 'assertions', async ({page}) => {
+    test( 'assertions @myTag', async ({page}) => {
         await page.goto('https://picsum.photos/images')
         await expect(page).toHaveURL('https://picsum.photos/images')
         await expect(page).toHaveTitle('Lorem Picsum - Images')
