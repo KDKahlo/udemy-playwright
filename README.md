@@ -1,9 +1,9 @@
 #Playwrite Test Scripts
 
 ##This repository contains test written using playwright for multiple websites based on what I have learned in "Automated Software Testing with Playwright" Course on Udemy.
--https://www.example.com/
--https://picsum.photos/images
--http://zero.webappsecurity.com/index.html
+*https://www.example.com/
+*https://picsum.photos/images
+*http://zero.webappsecurity.com/index.html
 
 ## Features
 
