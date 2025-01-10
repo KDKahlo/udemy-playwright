@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import {loadHomepage, assertTitle} from '../helper'
 
 test('Simple basic test', async ({page}) => {
     // Here goes the test code 
@@ -70,5 +71,26 @@ test.describe('My first test suite', () => {
     
     })
 
+})
+test.describe.parallel('Hooks', () => {
+    test.beforeEach(async ({page}) => {
+        await page.goto('https://picsum.photos/images')
+    })
+    test('screenshot', async ({page}) => {
+        //Step 1: load website
+        // await page.goto('https://picsum.photos/images')
+        //Step 2: take screenshot of full page
+        await page.screenshot({path: 'fullpageScreenshot.png', fullPage: true})
+    })
+    test('single element screenshot', async ({page}) => {
+        // await page.goto('https://picsum.photos/images')
+        const targetElement = await page.$('h1')
+        await page.screenshot({path: 'targetElement.png'})
+    })
+})
+test.only('custom helper', async ({page}) => {
+    await loadHomepage(page)
+    // await page.pause()
+    await assertTitle(page)
 })
     
