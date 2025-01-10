@@ -41,3 +41,30 @@ test('Working with Inputs', async  ({page}) => {
     const errorMessage = await page.locator('.alert-error')
     await expect(errorMessage).toContainText('Login and/or password are wrong.')
 })
+
+test('URL and Title checks', async ({page}) => {
+    await page.goto('http://zero.webappsecurity.com/index.html')
+    await expect(page).toHaveURL('http://zero.webappsecurity.com/index.html')
+    await expect(page).toHaveTitle('Zero - Personal Banking - Loans - Credit Cards')
+})
+//assertions
+test( 'assertions', async ({page}) => {
+    await page.goto('https://picsum.photos/images')
+    await expect(page).toHaveURL('https://picsum.photos/images')
+    await expect(page).toHaveTitle('Lorem Picsum - Images')
+
+    const h1Element = await page.locator('h1')
+    const h2Element = await page.locator('h2.text-2xl')
+    const h2s = await page.locator('h2')
+    console.log(await h2s.count())
+
+    await expect(h1Element).toBeVisible()
+    await expect(h1Element).toHaveText('Lorem Picsum')
+    await expect(h2Element).toHaveText('The Lorem Ipsum for photos.')
+    await expect(h1Element).toHaveCount(1)
+    await expect(h2Element).toHaveCount(1)
+
+    const nonExistingElement = await page.locator('h5')
+    await expect(nonExistingElement).not.toBeVisible()
+
+})
