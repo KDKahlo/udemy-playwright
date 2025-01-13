@@ -16,5 +16,20 @@ test('negative scenario for login', async ({page}) => {
     await expect(errorMessage).toContainText('Login and/or password are wrong.')
 })
 //positive scenario + logout
+test.only('positive scenario + logout', async ({page}) => {
+    await page.click('#signin_button')
+    await page.fill('#user_login', 'username')
+    await page.fill('#user_password', 'password')
+    await page.click('text=Sign in')
+
+    const accountSummaryTab = await page.locator('#account_summary_tab')
+    await expect(accountSummaryTab).toBeVisible()
+
+    await page.click('#logout_link')
+    const loginButton = await page.locator('#signin_button')
+    await expect(loginButton).toBeVisible()
+
+    
+})
 
 })
