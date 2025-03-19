@@ -7,7 +7,9 @@
     "tests:chrome": "playwright test --config=playwright.config.ts --project=chromium",
     "tests:firefox": "playwright test --config=playwright.config.ts --project=firefox",
     "tests:webkit": "playwright test --config=playwright.config.ts --project=webkit",
-    "test:e2e": "playwright test --config=e2e.config.ts --project=chromium"
+    "test:e2e": "playwright test --config=e2e.config.ts --project=chromium",
+    "test:example": "playwright test --config=example.config.ts --project=firefox"
+    
   },
   "author": "Kellie Dixon",
   "license": "ISC",
