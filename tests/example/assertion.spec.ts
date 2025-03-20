@@ -14,6 +14,8 @@ test('Testing Assertions', async ({page}) => {
     const currentAddress = page.locator('[placeholder="Current Address"]');
     const permanentAddress = page.locator('textarea#permanentAddress');
 
+
+
     await expect(name).toBeVisible();
     await expect(name).toHaveText('Name:Test Username');
     await expect(email).toBeVisible();

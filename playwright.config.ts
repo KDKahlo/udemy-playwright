@@ -11,6 +11,8 @@ const config: PlaywrightTestConfig = {
         ignoreHTTPSErrors: true,
         video: "on-first-retry", 
         screenshot: "only-on-failure",
+        trace: "retry-with-trace"
+        
     },
     projects: [
         {
