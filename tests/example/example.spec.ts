@@ -43,7 +43,7 @@ test.skip('Working with Inputs', async  ({page}) => {
     await expect(errorMessage).toContainText('Login and/or password are wrong.')
 })
 
-test.describe.parallel('My first test suite', () => { 
+test.describe.skip('My first test suite', () => { 
     test('URL and Title checks', async ({page}) => {
         await page.goto('http://zero.webappsecurity.com/index.html')
         await expect(page).toHaveURL('http://zero.webappsecurity.com/index.html')
@@ -68,14 +68,6 @@ test.describe.parallel('My first test suite', () => {
     
         const nonExistingElement = await page.locator('h5')
         await expect(nonExistingElement).not.toBeVisible()
-        
-        
-        
-        
-        
-    
-       
-    
     })
 
 })
@@ -83,21 +75,40 @@ test.describe.parallel('Hooks', () => {
     test.beforeEach(async ({page}) => {
         await page.goto('https://picsum.photos/images')
     })
-    test('screenshot', async ({page}) => {
+    test.skip('screenshot', async ({page}) => {
         //Step 1: load website
         // await page.goto('https://picsum.photos/images')
         //Step 2: take screenshot of full page
         await page.screenshot({path: 'fullpageScreenshot.png', fullPage: true})
     })
-    test('single element screenshot', async ({page}) => {
+    test.skip('single element screenshot', async ({page}) => {
         // await page.goto('https://picsum.photos/images')
         const targetElement = await page.$('h1')
         await page.screenshot({path: 'targetElement.png'})
     })
 })
-test('custom helper', async ({page}) => {
-    await loadHomepage(page)
-    // await page.pause()
-    await assertTitle(page)
+
+test.describe.parallel('Example Tests', () => {
+   const baseurl = 'https://the-internet.herokuapp.com/iframe';
+    test.skip('testing iframe', async ({page}) => {
+        await page.goto(baseurl);
+        const frametest = page.frameLocator('#mce_0').locator('html');
+        // Locate the editable field inside the iframe
+        const editor = frametest.locator('#tinymce');
+        // Click inside the editor to focus
+         await editor.click();
+        // Fill text into the editor
+        await editor.fill('This is an iframe test');
+    })
+    test('testing downloading file', async ({page}) => {
+             await page.goto(baseurl);
+       
+            await page.goto('https://the-internet.herokuapp.com/');
+            await page.getByRole('link', { name: 'File Download', exact: true }).click();
+            const downloadPromise = page.waitForEvent('download');
+            await page.getByRole('link', { name: 'test_file.txt' }).click();
+            const download = await downloadPromise;
+            // Wait for the download process to complete and save the downloaded file somewhere.
+            await download.saveAs('/tests/example' + download.suggestedFilename());
+    })
 })
-    
