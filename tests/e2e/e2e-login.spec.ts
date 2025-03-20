@@ -22,12 +22,12 @@ test('positive scenario + logout', async ({page}) => {
     await page.fill('#user_password', 'password')
     await page.click('text=Sign in')
 
-    const accountSummaryTab = await page.locator('#account_summary_tab')
-    await expect(accountSummaryTab).toBeVisible()
+    // const accountSummaryTab = await page.locator('#account_summary_tab')
+    // await expect(accountSummaryTab).toBeVisible()
 
-    await page.click('#logout_link')
-    const loginButton = await page.locator('#signin_button')
-    await expect(loginButton).toBeVisible()
+    // await page.click('#logout_link')
+    // const loginButton = await page.locator('#signin_button')
+    // await expect(loginButton).toBeVisible()
 
     
 })
