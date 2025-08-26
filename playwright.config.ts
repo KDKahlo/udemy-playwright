@@ -27,6 +27,9 @@ const config: PlaywrightTestConfig = {
             name: "webkit",
             use: { browserName: "webkit" },
         },
+        {testDir: 'tests'}, 
+        {reporter: [["list"]]}
+
     ]
 }
 

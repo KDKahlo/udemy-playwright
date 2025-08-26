@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
 import {loadHomepage, assertTitle} from '../../helper'
 
-test.skip('Simple basic test', async ({page}) => {
+test('Simple basic test', async ({page}) => {
     // Here goes the test code 
     await page.goto('http://www.example.com')
     const pageTitle = await page.locator('h1')
     await expect(pageTitle).toContainText('Example Domain')
 })
-test.skip('Clicking on elements', async ({page}) => {
+test('Clicking on elements', async ({page}) => {
     await page.goto('http://zero.webappsecurity.com/index.html')
     await page.click('#signin_button')
     await page.click('text = Sign in')
@@ -15,7 +15,7 @@ test.skip('Clicking on elements', async ({page}) => {
     const errorMessage = await page.locator('.alert-error')
     await expect(errorMessage).toContainText('Login and/or password are wrong.')
 })
-test.skip('Selectors', async ({page}) => {
+test('Selectors', async ({page}) => {
 //text
 await page.click('text = Select')
 //CSS selectors
@@ -31,7 +31,7 @@ await page.click('#username .first-name')
 //XPath
 await page.click('//button')
 })
-test.skip('Working with Inputs', async  ({page}) => {
+test('Working with Inputs', async  ({page}) => {
     await page.goto('http://zero.webappsecurity.com/index.html')
     await page.click('#signin_button')
 
@@ -43,7 +43,7 @@ test.skip('Working with Inputs', async  ({page}) => {
     await expect(errorMessage).toContainText('Login and/or password are wrong.')
 })
 
-test.describe.skip('My first test suite', () => { 
+test.describe('My first test suite', () => { 
     test('URL and Title checks', async ({page}) => {
         await page.goto('http://zero.webappsecurity.com/index.html')
         await expect(page).toHaveURL('http://zero.webappsecurity.com/index.html')
@@ -75,13 +75,13 @@ test.describe.parallel('Hooks', () => {
     test.beforeEach(async ({page}) => {
         await page.goto('https://picsum.photos/images')
     })
-    test.skip('screenshot', async ({page}) => {
+    test('screenshot', async ({page}) => {
         //Step 1: load website
         // await page.goto('https://picsum.photos/images')
         //Step 2: take screenshot of full page
         await page.screenshot({path: 'fullpageScreenshot.png', fullPage: true})
     })
-    test.skip('single element screenshot', async ({page}) => {
+    test('single element screenshot', async ({page}) => {
         // await page.goto('https://picsum.photos/images')
         const targetElement = await page.$('h1')
         await page.screenshot({path: 'targetElement.png'})
@@ -90,7 +90,7 @@ test.describe.parallel('Hooks', () => {
 
 test.describe.parallel('Example Tests', () => {
    const baseurl = 'https://the-internet.herokuapp.com/iframe';
-    test.skip('testing iframe', async ({page}) => {
+    test('testing iframe', async ({page}) => {
         await page.goto(baseurl);
         const frametest = page.frameLocator('#mce_0').locator('html');
         // Locate the editable field inside the iframe
